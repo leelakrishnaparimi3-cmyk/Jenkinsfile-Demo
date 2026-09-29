@@ -25,19 +25,25 @@ pipeline{
                 bat 'docker --version'
             }
         }
-        stage('Dependenies'){
-            steps{
-                bat 'npm install'
-            }
+        stage('Dependencies') {
+    steps {
+        dir('JenkinsFileDemo') {
+            bat 'npm install'
         }
-        stage('Test APP'){
-            steps{
-                bat 'npm test'
-            }
+    }
+}
+ stage('Test APP') {
+    steps {
+        dir('JenkinsFileDemo') {
+            bat 'npm test'
         }
+    }
+}
         stage('Build'){
             steps{
-                bat 'docker buid -t %IMAGE_NAME%:%BUILD_NUMBER% .'
+                dir('JenkinsFileDemo') {
+    bat 'docker build -t ... .'
+}
             }
         }
         stage('Run Container'){

@@ -42,7 +42,7 @@ pipeline{
         stage('Build'){
             steps{
                 dir('JenkinsFileDemo') {
-    bat 'docker build -t sampleapp:1.0.'
+     bat 'docker build -t sampleapp:1.0 .'
 }
             }
         }
